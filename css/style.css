@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #5cc3e2;
+}
+
+.box {
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.box__validation {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.validation__input {
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: 8px;
+  border: 1px solid #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  outline: none;
+  font-size: 18px;
+}
+
+.validation__btn {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: rgba(0, 0, 0, 0.1);
+  right: 10px;
+  top: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.validation__btn::before {
+  content: '\f06e';
+  font-family: fontAwesome;
+  font-size: 18px;
+}
+
+.validation__btn.hide::before {
+  content: '\f070';
+  font-family: fontAwesome;
+  font-size: 18px;
+}
+
+.box__content {
+  padding: 10px;
+  background: #478396;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+  overflow: hidden;
+  height: auto;
+  transition: all .2s linear;
+}
+
+.content__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list__item {
+  position: relative;
+  padding-left: 30px;
+  color: #ffffff;
+
+}
+
+.list__item::before {
+  content: '\f192'; 
+  position: absolute;
+  font-family: fontAwesome;
+  top: 1px;
+  left: 0;
+}
+
+.list__item.valid {
+  color: #b9b9b9;
+}
+
+.list__item.valid::before {
+  content: '\f00c';
+  color: rgb(53, 226, 53);
+}
+
+.hidden {
+  height: 0;
+  padding: 0;
+}

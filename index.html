@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/style.css">
+  <title>validation</title>
+</head>
+<body>
+  <div class="box">
+    <div class="box__validation">
+      <input type="password" class="validation__input" placeholder="Введите пароль">
+      <button class="validation__btn"></button>
+    </div>
+    <div class="box__content hidden">
+      <ul class="content__list">
+        <li class="list__item" id="upper">
+          Одна буква верхнего регистра
+        </li>
+        <li class="list__item" id="lower">
+          Одна буква нижнего регистра
+        </li>
+        <li class="list__item" id="int">
+          Одна цифра
+        </li>
+        <li class="list__item" id="symbol">
+          Один спец символ
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.querySelector('.validation__btn');
+    const input = document.querySelector('.validation__input');
+    const lower = document.getElementById('lower');
+    const upper = document.getElementById('upper');
+    const int = document.getElementById('int');
+    const symbol = document.getElementById('symbol');
+
+    input.onkeyup = function(e) {
+      const value = e.target.value.trim();
+      const arr = value.split('');
+      const symbolArr = [
+        '$','#','@','%','^','&','*'
+      ];
+
+      if(arr.some(item => item === item.toUpperCase())){ 
+        upper.classList.add('valid');
+      } else {
+        upper.classList.remove('valid');
+      }
+
+      if(arr.some(item => item === item.toLowerCase())){
+        lower.classList.add('valid');
+      } else {
+        lower.classList.remove('valid');
+      }
+
+      if(arr.some(item => item == Number(item))) {
+        int.classList.add('valid');
+      } else {
+        int.classList.remove('valid');
+      }
+
+      if(arr.some(item => item == '!' ||
+        item == '@' ||
+        item == '#' ||
+        item == '$' ||
+        item == '%' ||
+        item == '^' ||
+        item == '&' ||
+        item == '*')) {
+          symbol.classList.add('valid');
+         } else {
+          symbol.classList.remove('valid');
+         }
+
+      
+      
+    }
+
+    input.onfocus = function() {
+      document.querySelector('.box__content').classList.remove('hidden');
+    }
+
+    input.onblur = function () {
+      document.querySelector('.box__content').classList.add('hidden');
+    }
+
+    toggleBtn.onclick = function() {
+      if(input.getAttribute('type') === 'password') {
+        input.setAttribute('type', 'text');
+        this.classList.add('hide'); 
+      } else {
+        input.setAttribute('type', 'password');
+        this.classList.remove('hide');
+      }
+    }
+
+    
+  </script>
+</body>
+</html>
